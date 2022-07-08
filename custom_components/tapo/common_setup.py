@@ -51,6 +51,9 @@ async def setup_tapo_coordinator(
     hass: HomeAssistant, host: str, username: str, password: str
 ) -> "TapoUpdateCoordinator":
     session = async_get_clientsession(hass)
+    _LOGGGER.exception("host {}".format(host))
+    _LOGGGER.exception("username {}".format(username))
+    _LOGGGER.exception("password {}".format(password))
     client = TapoApiClient(host, username, password, session)
 
     coordinator = TapoUpdateCoordinator(hass, client=client)
