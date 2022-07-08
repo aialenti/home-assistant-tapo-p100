@@ -100,6 +100,9 @@ class TapoConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     async def _test_credentials(self, address, username, password) -> TapoApiClient:
         try:
+            _LOGGER.exception("host {}".format(host))
+            _LOGGER.exception("username {}".format(username))
+            _LOGGER.exception("password {}".format(password))
             session = async_create_clientsession(self.hass)
             client = TapoApiClient(address, username, password, session)
             await client.login()
